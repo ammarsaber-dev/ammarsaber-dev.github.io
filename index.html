@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ammar Saber · iOS Developer</title>
+    <meta name="description"    content="Ammar Saber, iOS developer and CS student at Zagazig University.">
+    <meta property="og:title"   content="Ammar Saber · iOS Developer">
+    <meta property="og:description" content="Ammar Saber, iOS developer and CS student at Zagazig University.">
+    <meta property="og:type"    content="website">
+    <meta name="twitter:card"   content="summary">
+    <meta name="theme-color"    content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color"    content="#111111" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+    <style>
+        /* ─── Tokens ─────────────────────────────────────────── */
+        :root {
+            color-scheme: light dark;
+
+            --color-bg:     #ffffff;
+            --color-text:   #111111;
+            --color-muted:  #777777;
+            --color-link:   #2563eb;
+            --color-border: rgba(0, 0, 0, 0.1);
+
+            --space-xs: 0.25rem;
+            --space-sm: 0.75rem;
+            --space-md: 2rem;
+            --space-xl: 2.5rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg:     #111111;
+                --color-text:   #eeeeee;
+                --color-muted:  #999999;
+                --color-link:   #60a5fa;
+                --color-border: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* ─── Reset ──────────────────────────────────────────── */
+        *, *::before, *::after {
+            margin:     0;
+            padding:    0;
+            box-sizing: border-box;
+        }
+
+        /* ─── Base ───────────────────────────────────────────── */
+        html { font-size: 100%; }
+
+        body {
+            background:     var(--color-bg);
+            color:          var(--color-text);
+            font-family:    'DM Sans', system-ui, -apple-system, sans-serif;
+            font-size:      clamp(1rem, 1.5vw, 1.25rem);
+            line-height:    1.7;
+            width:          min(100% - 2.5rem, 72ch);
+            margin:         clamp(2rem, 5vw, 4rem) auto;
+            padding-bottom: 0;
+        }
+
+        img, video { display: block; max-width: 100%; }
+
+        ::selection { background: var(--color-link); color: #ffffff; }
+
+        /* ─── Typography ─────────────────────────────────────── */
+        h1 {
+            font-family:    'Syne', system-ui, sans-serif;
+            font-size:      clamp(2rem, 5vw, 2.75rem);
+            font-weight:    700;
+            line-height:    1.1;
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size:      0.8rem;
+            font-weight:    600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color:          var(--color-muted);
+        }
+
+        h3 {
+            font-size:   1rem;
+            font-weight: 700;
+        }
+
+        /* ─── Flow ───────────────────────────────────────────── */
+        .flow > * + *  { margin-top: var(--space-sm); }
+        .flow > * + h2 { margin-top: var(--space-md); }
+
+        /* ─── Links ──────────────────────────────────────────── */
+        a {
+            color:                 var(--color-muted);
+            text-decoration:       underline;
+            text-underline-offset: 3px;
+            text-decoration-color: color-mix(in srgb, var(--color-muted) 40%, transparent);
+            transition:            color 0.15s, text-decoration-color 0.15s;
+        }
+
+        a:hover {
+            color:                 var(--color-text);
+            text-decoration-color: var(--color-text);
+        }
+
+        a:focus-visible {
+            outline:        2px solid currentColor;
+            outline-offset: 3px;
+            border-radius:  2px;
+        }
+
+        /* ─── Header ─────────────────────────────────────────── */
+        header { margin-bottom: var(--space-md); }
+
+        .header__name::after {
+            content:       '';
+            display:       block;
+            width:         2rem;
+            height:        2px;
+            background:    var(--color-border);
+            border-radius: 2px;
+            margin-top:    0.4rem;
+        }
+
+        .header__role {
+            font-size:  0.95rem;
+            color:      var(--color-muted);
+            margin-top: var(--space-xs);
+        }
+
+        .header__links {
+            font-size:  0.9rem;
+            margin-top: var(--space-xs);
+        }
+
+        .header__links a {
+            color:                 var(--color-link);
+            text-decoration:       underline;
+            text-decoration-color: transparent;
+        }
+
+        .header__links a:hover { text-decoration-color: var(--color-link); }
+
+        .header__links .sep { color: var(--color-muted); }
+
+        /* ─── Project ────────────────────────────────────────── */
+        .project {
+            display:               grid;
+            grid-template-columns: 2rem 1fr 1.5fr;
+            gap:                   0 1rem;
+            align-items:           start;
+        }
+
+        @media (max-width: 540px) {
+            .project { grid-template-columns: 2rem 1fr; }
+            .project__desc { grid-column: 2; margin-top: var(--space-xs); }
+        }
+
+        .project__num {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size:   1.25rem;
+            font-weight: 700;
+            color:       var(--color-muted);
+            line-height: 1.15;
+        }
+
+        .project__left {
+            display:        flex;
+            flex-direction: column;
+            gap:            0.2rem;
+        }
+
+        .project h3 a {
+            color:           var(--color-link);
+            text-decoration: none;
+        }
+
+        .project h3 a:hover {
+            text-decoration:       underline;
+            text-decoration-color: var(--color-link);
+        }
+
+        .project__tech {
+            font-size: 0.8rem;
+            color:     var(--color-muted);
+        }
+
+        .project__desc {
+            font-size:   0.95rem;
+            line-height: 1.6;
+            opacity:     0.8;
+        }
+
+        /* ─── Footer ─────────────────────────────────────────── */
+        footer {
+            margin-top:  var(--space-xl);
+            padding-top: var(--space-md);
+            border-top:  1px solid var(--color-border);
+        }
+
+        footer a {
+            color:                 var(--color-link);
+            font-weight:           600;
+            text-decoration:       underline;
+            text-underline-offset: 3px;
+            text-decoration-color: color-mix(in srgb, var(--color-link) 40%, transparent);
+        }
+
+        footer a:hover { text-decoration-color: var(--color-link); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="header__name">Ammar Saber</h1>
+        <p class="header__role">CS Student · iOS Developer · Egypt 🇪🇬</p>
+        <p class="header__links">
+            <a href="mailto:ammarsaber.dev@icloud.com">Email</a>
+            <span class="sep"> · </span>
+            <a href="https://github.com/ammarsaber-dev">GitHub</a>
+            <span class="sep"> · </span>
+            <a href="https://linkedin.com/in/ammarsaber-dev">LinkedIn</a>
+        </p>
+    </header>
+
+    <main>
+        <div class="flow">
+            <p>Hi, I'm Ammar. I'm a CS student at Zagazig University building iOS apps with Swift and SwiftUI. Before that, I spent over a year and a half breaking them through bug bounty hunting on <a href="https://hackerone.com/0xammar?type=user">HackerOne</a> and <a href="https://bugcrowd.com/h/0xAmmar">Bugcrowd</a>.</p>
+
+            <p>That background gives me a different lens on how software gets hacked, and how to build it so it doesn't.</p>
+
+            <h2>Projects</h2>
+
+            <article class="project">
+                <div class="project__num">01</div>
+                <div class="project__left">
+                    <h3><a href="https://github.com/ammarsaber-dev/Pomo">Pomo</a></h3>
+                    <span class="project__tech">Swift · SwiftUI · SwiftData</span>
+                </div>
+                <p class="project__desc">Pomodoro timer with live progress ring, task naming, session history, and streaks. Built for iOS 26 with a Liquid Glass aesthetic.</p>
+            </article>
+        </div>
+
+        <footer>
+            <p>I'm looking for an iOS internship. Reach me at <a href="mailto:ammarsaber.dev@icloud.com">ammarsaber.dev@icloud.com</a></p>
+        </footer>
+    </main>
+
+</body>
+</html>
